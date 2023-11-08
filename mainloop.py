@@ -1,7 +1,7 @@
 
 import random
 
-from functions import clearTerminal, drawBoard, drawKeyboard, evaluteGuess, fileToList
+from functions import clearTerminal, drawBoard, drawKeyboard2, evaluteGuess, fileToList
 
 
 def main(randomWord):
@@ -126,7 +126,7 @@ def main(randomWord):
   while playing:
     clearTerminal()
     drawBoard(board)
-    drawKeyboard()
+    drawKeyboard2()
   
     if guessNumber > 6 or won:
       playing = False

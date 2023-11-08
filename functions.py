@@ -19,6 +19,7 @@ used = "used"
 
 keyboardDict = {}
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+keyboardLayout = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
 lettersUsed = []
 
 for letter in letters:
@@ -42,31 +43,57 @@ def fileToList(filePath):
 
 
 def drawBoard(board):
-    
-    print(f"{'Wordle':^21}")
-    print(f"{colored('Green',COLOR_GREEN)} | {colored('Yellow',COLOR_YELLOW)} | {colored('Grey',COLOR_GREY)}\n")  
+    finalString = ""
+    finalString += f"{'Wordle':^21}\n"
+    finalString += f"{colored('Green',COLOR_GREEN)} | {colored('Yellow',COLOR_YELLOW)} | {colored('Grey',COLOR_GREY)}\n\n"
 
     for i in range(1, 7):
         string = " "
         list = board[i]
         for x in range(5):
             string += colored(f"[{list[x]['letter']}] ", list[x]['color'])
-        print(string)
-        print("---------------------\n")
+        string += "\n---------------------\n"
+        finalString += string
+    print(finalString)
 
 
 def drawKeyboard():
+    finalString = ""
     for x in range(2):
         string = ""
         for index in range((13*x),(13*(x+1))):
             letter = letters[index]
             string += colored(f"[{letter.upper()}]",keyboardDict[letter])
-        print(string)
+        finalString += string
+        finalString += "\n"
+    print(finalString)
 
+def drawKeyboard2():
+   finalString = f""
+   
+   string = f""
+   for x in range(10):
+       letter = keyboardLayout[x]
+       string += colored(f"[{letter.upper()}]",keyboardDict[letter])
+   finalString += f"{string:^30}"
+   finalString += "\n"
+   
+   string = f""
+   for x in range(10,19):
+        letter = keyboardLayout[x]
+        string += colored(f"[{letter.upper()}]",keyboardDict[letter])
+   finalString += f"{string:^30}"
+   finalString += "\n"
+   
+   string = f""
+   for x in range(20,26):
+        letter = keyboardLayout[x]
+        string += colored(f"[{letter.upper()}]",keyboardDict[letter])
+   finalString += f"{string:^30}"
+   finalString += "\n"
+   
+   print(finalString)
 
-def drawWindow():
-    
-    pass
 
 def evaluteGuess(guess, guessRow, secretWord):
 
