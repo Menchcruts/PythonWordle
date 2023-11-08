@@ -15,8 +15,12 @@ COLOR_WHITE = "white"
 #Initialize keybaord dictionary
 keyboardDict = {}
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-keyboardLayout = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
+keyboardList = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
 lettersUsed = []
+keyboardLayout = f"""
+[{0}][{1}][{2}][{3}][{4}][{5}][{6}][{7}][{8}][{9}]
+  [{10}][{11}][{12}][{13}][{14}][{15}][{16}][{17}][{18}]
+    [{19}][{20}][{21}][{22}][{23}][{24}][{25}]"""
 
 for letter in letters:
   keyboardDict[letter] = COLOR_WHITE
@@ -69,21 +73,21 @@ def drawKeyboard2():
    
    string = f""
    for x in range(10):
-       letter = keyboardLayout[x]
+       letter = keyboardList[x]
        string += colored(f"[{letter.upper()}]",keyboardDict[letter])
    finalString += f"{string:^30}"
    finalString += "\n"
    
    string = f""
    for x in range(10,19):
-        letter = keyboardLayout[x]
+        letter = keyboardList[x]
         string += colored(f"[{letter.upper()}]",keyboardDict[letter])
    finalString += f"{string:^30}"
    finalString += "\n"
    
    string = f""
    for x in range(20,26):
-        letter = keyboardLayout[x]
+        letter = keyboardList[x]
         string += colored(f"[{letter.upper()}]",keyboardDict[letter])
    finalString += f"{string:^30}"
    finalString += "\n"
