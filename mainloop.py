@@ -4,6 +4,7 @@ import random
 from functions import clearTerminal, drawBoard, drawKeyboard2, evaluteGuess, fileToList
 
 
+
 def main(randomWord):
 
   validWords = fileToList("valid-wordle-words.txt")
