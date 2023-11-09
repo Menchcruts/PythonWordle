@@ -1,13 +1,9 @@
-from mainloopUpdate import main
+from mainloop import main
 from functions import clearTerminal
-from mainFuncs import printRules
 
 user = input("What's your name? \n")
 print(f"Hello {user}!")
 input("Press enter to continue.")
-
-clearTerminal()
-printRules()
 
 playing = True
 score = 0
@@ -32,10 +28,11 @@ while playing:
       break
     elif choice.lower() == "n":
       print("Ok, bye!")
-      clearTerminal(0.75)
+      clearTerminal(1)
       playing = False
       break
     else:
       print("Invalid choice. Please try again.")
       clearTerminal(1)
   
+

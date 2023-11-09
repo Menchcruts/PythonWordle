@@ -6,18 +6,20 @@ COLOR_GREEN = "green"
 COLOR_YELLOW = "light_yellow"
 COLOR_WHITE = "white"
 
-class RowLetter:
+class Letter:
     
     def __init__(self):
-        self.rowLetter = ""
+        self.letter = " "
         self.letterColor = COLOR_WHITE
-        self.rowLetterArt = colored(f"[{self.rowLetter}]",self.letterColor)
-        
-    def __str__(self):
-        return self.rowLetterArt
     
-    def updateLetter(self,newLetter, newColor):
-        self.rowLetter = newLetter
+    def updateLetter(self, newLetter, newColor):
+        self.letter = newLetter
         self.letterColor = newColor
         
+    def setColor(self, newColor):
+        self.letterColor = newColor
+        
+
+    def getArt(self):
+        return colored(f"[{self.letter}] ",self.letterColor)
 
