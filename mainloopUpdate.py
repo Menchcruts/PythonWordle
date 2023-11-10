@@ -1,6 +1,7 @@
+from email.utils import decode_params
 import random
 
-from mainFuncs import clearTerminal, drawBoard, drawLettersUsed, drawKeyboard, evaluteGuess, fileToList, updateLettersUsed
+from mainFuncs import clearTerminal, drawBoard, drawKeyboard, evaluteGuess, fileToList, updateLettersUsed
 from letterClass import Letter
 
 COLOR_WHITE = "white"
@@ -35,7 +36,6 @@ def main(randomWord):
     while playing:
         clearTerminal()
         drawBoard(board)
-        #drawLettersUsed(lettersUsed)
         drawKeyboard(lettersUsed)
         
         if guessNumber > 6 or won:
@@ -85,7 +85,7 @@ def main(randomWord):
     if won:
         print(f"You guessed the word in {guessNumber-1} guesses.")
         print(f"The word was {secretWord.title()}")
-        return 1
+        return 7 - guessNumber
     else:
         if not gaveUp:
             print("You ran out of guesses. Bummer.")

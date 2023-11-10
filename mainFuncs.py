@@ -18,14 +18,6 @@ keyboardKeyLayout = {
     3:['z','x','c','v','b','n','m']
     }
 
-keyboardLayout = f"""
-[{0}][{1}][{2}][{3}][{4}][{5}][{6}][{7}][{8}][{9}]
-  [{10}][{11}][{12}][{13}][{14}][{15}][{16}][{17}][{18}]
-    [{19}][{20}][{21}][{22}][{23}][{24}][{25}]"""
-
-keyboardLayout2 = f"""
-{'temp'}"""
-
 
 def clearTerminal(sleepTime=0):
   sleep(sleepTime)
@@ -83,36 +75,21 @@ def updateLettersUsed(lettersUsed, guessRow):
     
 def drawBoard(board):
     boardString = ""
-    title = f"{'Wordle':^21}\n"
-    subTitle = f"{colored('Green',COLOR_GREEN)} | {colored('Yellow',COLOR_YELLOW)} | {colored('Grey',COLOR_GREY)}\n"
+    title = f"     {'Wordle':^21}\n"
+    subTitle = f"    {colored('Green',COLOR_GREEN)} | {colored('Yellow',COLOR_YELLOW)} | {colored('Grey',COLOR_GREY)}\n"
     
     boardString += title
     boardString += subTitle
     
     for row in board:
-        rowString = "\n "
+        rowString = "\n     "
         for item in board[row]:
             rowString += item.getArt()
+        boardString += "    "
         boardString += rowString
-        boardString += "\n---------------------\n"
+        boardString += "\n    ---------------------\n"
         
     print(boardString)
-    
-
-def drawLettersUsed(lettersUsed):
-    finalString = ""
-    notUsedLetters = "Unused letter: \n"
-    usedLetters = "Used letters: \n"
-    for letter in letters:
-        if letter not in lettersUsed:
-            notUsedLetters += f"[{letter}]"
-        else:
-            usedLetters += lettersUsed[letter].getArt().replace(" ","")
-    
-    finalString += notUsedLetters
-    finalString += "\n"
-    finalString += usedLetters
-    print(finalString)
 
 
 def drawKeyboard(lettersUsed):
@@ -139,6 +116,7 @@ def drawKeyboard(lettersUsed):
         finalString += "\n"
     
     print(finalString)
+
 
 
 def printRules():
