@@ -4,12 +4,15 @@ from time import sleep
 from termcolor import colored
 from letterClass import Letter
 
+
+
+#Nokkrar lita breytur fyrir termcolor
 COLOR_GREY = "dark_grey"
 COLOR_GREEN = "green"
 COLOR_YELLOW = "light_yellow"
 COLOR_WHITE = "white"
 
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+#letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 keyboardList = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
 
 keyboardKeyLayout = {
@@ -123,6 +126,7 @@ def printRules():
     example = f" [{colored('G',COLOR_GREEN)}] [{colored('L',COLOR_YELLOW)}] [{colored('A',COLOR_GREY)}] [{colored('Z',COLOR_GREY)}] [{colored('E',COLOR_GREY)}]\n"
     title = f"{'Rules':^40}\n-----------------------------------------"    
 
+    clearTerminal()
     print(title)
     print("""Wordle is a word guessing game where you 
 try and guess a five letter word in no 

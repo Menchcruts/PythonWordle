@@ -1,11 +1,21 @@
+# This Python file uses the following encoding: utf-8
+
 from mainloopUpdate import main
 from mainFuncs import printRules, clearTerminal
+
+from colorama import just_fix_windows_console
+
+#Þetta lætur terminal-ið geta skrifað texta í lit
+just_fix_windows_console()
 
 user = input("What's your name? \n")
 print(f"Hello {user}!")
 input("Press enter to continue.")
 
+#clearTeminal() er fall sem gerir nákvæmlega það sem það heitir, 
+#eða strokar út allan texta í terminal-inu.
 clearTerminal()
+
 print("Would you like to read the rules?")
 choice = input("(Y/N): ").lower()
 
@@ -15,12 +25,13 @@ if choice == "y":
 
 playing = True
 score = 0
-randomWord = True
+randomWord = False
 
 while playing:
   score += main(randomWord)
   input("Press enter to continue.")
 
+  #while lúppa á meðan leikmaður er að ákveða sig. 
   while True:
     clearTerminal()
     

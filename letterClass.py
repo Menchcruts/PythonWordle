@@ -25,7 +25,7 @@ class Letter:
     def setLetter(self, newLetter):
         self.letter = newLetter
         
-
+    #Sendir litağann stafinn í 'kassa', eğa [], til baka
     def getArt(self):
         return colored(f"[{self.letter}] ",self.letterColor)
 
