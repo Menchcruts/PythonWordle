@@ -8,9 +8,12 @@ COLOR_WHITE = "white"
 
 class Letter:
     
-    def __init__(self):
-        self.letter = " "
-        self.letterColor = COLOR_WHITE
+    def __init__(self, letter=" ", color = COLOR_WHITE):
+        self.letter = letter
+        self.letterColor = color
+        
+    def __str__(self):
+        return f"{self.letter}, {self.letterColor}"
     
     def updateLetter(self, newLetter, newColor):
         self.letter = newLetter

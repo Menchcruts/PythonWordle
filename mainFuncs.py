@@ -21,6 +21,10 @@ keyboardLayout = f"""
   [{10}][{11}][{12}][{13}][{14}][{15}][{16}][{17}][{18}]
     [{19}][{20}][{21}][{22}][{23}][{24}][{25}]"""
 
+keyboardLayout2 = f"""
+{'temp'}"""
+
+
 def evaluteGuess(guess, guessRow, secretGuess):
     
     possibleYellowIndices = []
@@ -49,8 +53,15 @@ def evaluteGuess(guess, guessRow, secretGuess):
     return guessRow
     
             
-    
+def updateLettersUsed(lettersUsed, guessRow):
+    letterKeys = list(lettersUsed.keys())
+    for item in guessRow:
+        if item.letter.lower() in letterKeys:
+            lettersUsed[item.letter.lower()].setColor(item.letterColor)
 
+    return lettersUsed
+
+    
 def drawBoard(board):
     boardString = ""
     title = f"{'Wordle':^21}\n"

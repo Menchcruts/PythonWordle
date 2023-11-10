@@ -7,7 +7,12 @@ print(f"Hello {user}!")
 input("Press enter to continue.")
 
 clearTerminal()
-printRules()
+print("Would you like to read the rules?")
+choice = input("(Y/N): ").lower()
+
+if choice == "y":
+    printRules()
+
 
 playing = True
 score = 0

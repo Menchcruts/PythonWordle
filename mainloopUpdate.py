@@ -1,8 +1,10 @@
 import random
 
 from functions import fileToList, clearTerminal
-from mainFuncs import drawBoard, evaluteGuess
+from mainFuncs import drawBoard, evaluteGuess, updateLettersUsed
 from rowClass import Letter
+
+COLOR_WHITE = "white"
 
 def main(randomWord):
 
@@ -11,7 +13,7 @@ def main(randomWord):
     if randomWord:
         secretWord = random.choice(validWords)
     else:
-        secretWord = "chode"
+        secretWord = "ghoul"
     
 
     #Create the inital board with empty boxes
@@ -23,6 +25,8 @@ def main(randomWord):
     
         board[i] = letterList
     
+    lettersUsed = {}
+
 
     playing = True
     gaveUp = False
@@ -31,6 +35,12 @@ def main(randomWord):
     
     while playing:
         clearTerminal()
+                
+        string = ""
+        for key in lettersUsed:
+            string += f"{lettersUsed[key]} | "
+        print(string)
+
         drawBoard(board)
         
         if guessNumber > 6 or won:
@@ -40,6 +50,12 @@ def main(randomWord):
         guess = input().lower()
         guess = guess.replace(" ","")
         
+        letters = [*guess]
+        for letter in letters:
+            if letter not in lettersUsed:
+                lettersUsed[letter] = Letter(letter, COLOR_WHITE)
+
+
         if guess == "#quit":
             playing = False
             gaveUp = True
@@ -51,7 +67,9 @@ def main(randomWord):
         if guess in validWords:
             if len(guess) == 5:
                 board[guessNumber] = evaluteGuess(guess, board[guessNumber], secretWord)
+                lettersUsed = updateLettersUsed(lettersUsed, board[guessNumber])
                 guessNumber += 1
+
         
             elif len(guess) > 5:
                 print("Guess too long.")
