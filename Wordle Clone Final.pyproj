@@ -27,6 +27,7 @@
     <Compile Include="Wordle_Clone_Final.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="last-known-date.txt" />
     <Content Include="valid-wordle-words.txt" />
     <Content Include="valid-wordle-words2.txt" />
   </ItemGroup>

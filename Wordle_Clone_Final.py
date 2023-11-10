@@ -1,12 +1,15 @@
 # This Python file uses the following encoding: utf-8
 
 from mainloopUpdate import main
-from mainFuncs import printRules, clearTerminal
+from mainFuncs import printRules, clearTerminal, checkDate
 
 from colorama import just_fix_windows_console
 
 #Þetta lætur terminal-ið geta skrifað texta í lit
 just_fix_windows_console()
+
+newDay = checkDate()
+print(newDay)
 
 user = input("What's your name? \n")
 print(f"Hello {user}!")

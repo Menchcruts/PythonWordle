@@ -1,6 +1,8 @@
 import os
+import random
 
 from time import sleep
+from datetime import date
 from termcolor import colored
 from letterClass import Letter
 
@@ -12,14 +14,7 @@ COLOR_GREEN = "green"
 COLOR_YELLOW = "light_yellow"
 COLOR_WHITE = "white"
 
-#letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 keyboardList = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
-
-keyboardKeyLayout = {
-    1:['q','w','e','r','t','y','u','i','o','p'],
-    2:['a','s','d','f','g','h','j','k','l'],
-    3:['z','x','c','v','b','n','m']
-    }
 
 
 def clearTerminal(sleepTime=0):
@@ -37,6 +32,51 @@ def fileToList(filePath):
 
   return words
 
+
+def randomWord(wordList):
+    words = []
+    with open("valid-wordle-words2.txt") as file:
+        lines = file.readlines()
+        for line in lines:
+          newLine = line.replace("\n", "")
+          words.append(newLine)
+    
+    while True:
+        newWord = random.choice(words)
+        if newWord not in wordList:
+            break
+    return newWord
+
+    
+
+
+def checkDate():
+    today = date.today()
+    currentDate = today.strftime("%d/%m/%Y")
+    
+    with open("last-known-date.txt") as file:
+        lines = file.readlines()
+    
+    Dates_Words = {}
+    
+    for line in lines:
+        lineSplit = line.split(":")
+        Dates_Words[lineSplit[0]] = lineSplit[1].replace("\n","")
+    print(Dates_Words)
+        
+    Dates_Words_keys = list(Dates_Words.keys())
+    Dates_Words_values = list(Dates_Words.values())
+    lastKnownDate = Dates_Words_keys[-1]
+    newDay = bool(currentDate != lastKnownDate)  
+    newWord = randomWord(Dates_Words_values)
+
+    if newDay:
+        with open("last-known-date.txt","r+") as file:
+            file.seek(0,2)
+            file.write(currentDate + f":{newWord}" + "\n")
+
+    return newDay
+    
 
 def evaluteGuess(guess, guessRow, secretGuess):
     
@@ -119,7 +159,6 @@ def drawKeyboard(lettersUsed):
         finalString += "\n"
     
     print(finalString)
-
 
 
 def printRules():
