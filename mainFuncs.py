@@ -2,6 +2,7 @@ import os
 
 from time import sleep
 from termcolor import colored
+from letterClass import Letter
 
 COLOR_GREY = "dark_grey"
 COLOR_GREEN = "green"
@@ -98,7 +99,7 @@ def drawBoard(board):
     print(boardString)
     
 
-def drawKeyboard(lettersUsed):
+def drawLettersUsed(lettersUsed):
     finalString = ""
     notUsedLetters = "Unused letter: \n"
     usedLetters = "Used letters: \n"
@@ -111,6 +112,32 @@ def drawKeyboard(lettersUsed):
     finalString += notUsedLetters
     finalString += "\n"
     finalString += usedLetters
+    print(finalString)
+
+
+def drawKeyboard(lettersUsed):
+    lineLengths = [0,10,19,26]
+    lineIndent = ["","  ","    "]
+    
+    finalString = ""
+    for i in range(1,4):
+        finalString += lineIndent[i-1]
+        
+        minIndex = lineLengths[i-1]
+        maxIndex = lineLengths[i]
+
+        for x in range(minIndex,maxIndex):
+            tempLetter = keyboardList[x]
+            if tempLetter in lettersUsed:
+                tempObject = lettersUsed[tempLetter]
+                tempObject.setLetter(tempLetter.upper())
+            else:
+                tempObject = Letter(tempLetter.upper())
+            
+            finalString += tempObject.getArt().replace(" ","")
+        
+        finalString += "\n"
+    
     print(finalString)
 
 

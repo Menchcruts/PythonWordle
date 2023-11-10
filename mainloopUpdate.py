@@ -1,6 +1,6 @@
 import random
 
-from mainFuncs import clearTerminal, drawBoard, drawKeyboard, evaluteGuess, fileToList, updateLettersUsed
+from mainFuncs import clearTerminal, drawBoard, drawLettersUsed, drawKeyboard, evaluteGuess, fileToList, updateLettersUsed
 from letterClass import Letter
 
 COLOR_WHITE = "white"
@@ -35,6 +35,7 @@ def main(randomWord):
     while playing:
         clearTerminal()
         drawBoard(board)
+        #drawLettersUsed(lettersUsed)
         drawKeyboard(lettersUsed)
         
         if guessNumber > 6 or won:

@@ -22,6 +22,9 @@ class Letter:
     def setColor(self, newColor):
         self.letterColor = newColor
         
+    def setLetter(self, newLetter):
+        self.letter = newLetter
+        
 
     def getArt(self):
         return colored(f"[{self.letter}] ",self.letterColor)
