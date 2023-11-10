@@ -21,17 +21,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="functions.py" />
+    <Compile Include="Old\functions.py" />
     <Compile Include="mainFuncs.py" />
-    <Compile Include="mainloop.py" />
+    <Compile Include="Old\mainloop.py" />
     <Compile Include="mainloopUpdate.py" />
-    <Compile Include="oldMain.py" />
-    <Compile Include="rowClass.py" />
+    <Compile Include="Old\oldMain.py" />
+    <Compile Include="letterClass.py" />
     <Compile Include="Wordle_Clone_Final.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="valid-wordle-words.txt" />
     <Content Include="valid-wordle-words2.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Old\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

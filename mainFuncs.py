@@ -1,6 +1,7 @@
-from turtle import clear
+import os
+
+from time import sleep
 from termcolor import colored
-from functions import clearTerminal
 
 COLOR_GREY = "dark_grey"
 COLOR_GREEN = "green"
@@ -23,6 +24,22 @@ keyboardLayout = f"""
 
 keyboardLayout2 = f"""
 {'temp'}"""
+
+
+def clearTerminal(sleepTime=0):
+  sleep(sleepTime)
+  os.system("cls")
+
+
+def fileToList(filePath):
+  words = []
+  with open(filePath) as file:
+    lines = file.readlines()
+    for line in lines:
+      newLine = line.replace("\n", "")
+      words.append(newLine)
+
+  return words
 
 
 def evaluteGuess(guess, guessRow, secretGuess):
@@ -56,8 +73,9 @@ def evaluteGuess(guess, guessRow, secretGuess):
 def updateLettersUsed(lettersUsed, guessRow):
     letterKeys = list(lettersUsed.keys())
     for item in guessRow:
-        if item.letter.lower() in letterKeys:
-            lettersUsed[item.letter.lower()].setColor(item.letterColor)
+        letter = item.letter.lower()
+        if letter in letterKeys and lettersUsed[letter].letterColor != COLOR_GREEN:
+            lettersUsed[letter].setColor(item.letterColor)
 
     return lettersUsed
 
@@ -73,9 +91,7 @@ def drawBoard(board):
     for row in board:
         rowString = "\n "
         for item in board[row]:
-            #print(f"Item: {item}, Type: {type(item)}")
             rowString += item.getArt()
-        #print()
         boardString += rowString
         boardString += "\n---------------------\n"
         

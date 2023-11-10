@@ -1,6 +1,5 @@
 from mainloopUpdate import main
-from functions import clearTerminal
-from mainFuncs import printRules
+from mainFuncs import printRules, clearTerminal
 
 user = input("What's your name? \n")
 print(f"Hello {user}!")
@@ -16,7 +15,7 @@ if choice == "y":
 
 playing = True
 score = 0
-randomWord = True
+randomWord = False
 
 while playing:
   score += main(randomWord)
