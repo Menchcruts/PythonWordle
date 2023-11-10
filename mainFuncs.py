@@ -8,7 +8,7 @@ COLOR_GREEN = "green"
 COLOR_YELLOW = "light_yellow"
 COLOR_WHITE = "white"
 
-#letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 keyboardList = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
 
 keyboardKeyLayout = {
@@ -97,6 +97,21 @@ def drawBoard(board):
         
     print(boardString)
     
+
+def drawKeyboard(lettersUsed):
+    finalString = ""
+    notUsedLetters = "Unused letter: \n"
+    usedLetters = "Used letters: \n"
+    for letter in letters:
+        if letter not in lettersUsed:
+            notUsedLetters += f"[{letter}]"
+        else:
+            usedLetters += lettersUsed[letter].getArt().replace(" ","")
+    
+    finalString += notUsedLetters
+    finalString += "\n"
+    finalString += usedLetters
+    print(finalString)
 
 
 def printRules():

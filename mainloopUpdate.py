@@ -1,6 +1,6 @@
 import random
 
-from mainFuncs import clearTerminal, drawBoard, evaluteGuess, fileToList, updateLettersUsed
+from mainFuncs import clearTerminal, drawBoard, drawKeyboard, evaluteGuess, fileToList, updateLettersUsed
 from letterClass import Letter
 
 COLOR_WHITE = "white"
@@ -35,19 +35,15 @@ def main(randomWord):
     while playing:
         clearTerminal()
         drawBoard(board)
+        drawKeyboard(lettersUsed)
         
         if guessNumber > 6 or won:
             playing = False
             break
         
-        guess = input().lower()
+        guess = input(">> ").lower()
         guess = guess.replace(" ","")
         
-        letters = [*guess]
-        for letter in letters:
-            if letter not in lettersUsed:
-                lettersUsed[letter] = Letter(letter, COLOR_WHITE)
-
 
         if guess == "#quit":
             playing = False
@@ -60,7 +56,13 @@ def main(randomWord):
         if guess in validWords:
             if len(guess) == 5:
                 board[guessNumber] = evaluteGuess(guess, board[guessNumber], secretWord)
+                
+                letters = [*guess]
+                for letter in letters:
+                    if letter not in lettersUsed:
+                        lettersUsed[letter] = Letter(letter, COLOR_WHITE)
                 lettersUsed = updateLettersUsed(lettersUsed, board[guessNumber])
+                
                 guessNumber += 1
 
         
