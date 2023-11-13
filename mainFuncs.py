@@ -33,7 +33,7 @@ def fileToList(filePath):
   return words
 
 
-def randomWord(wordList):
+def randomWord():
     words = []
     with open("valid-wordle-words2.txt") as file:
         lines = file.readlines()
@@ -41,10 +41,8 @@ def randomWord(wordList):
           newLine = line.replace("\n", "")
           words.append(newLine)
     
-    while True:
-        newWord = random.choice(words)
-        if newWord not in wordList:
-            break
+    newWord = random.choice(words)
+    
     return newWord
 
     
@@ -57,23 +55,18 @@ def checkDate():
     with open("last-known-date.txt") as file:
         lines = file.readlines()
     
-    Dates_Words = {}
+    dates = []
     
     for line in lines:
-        lineSplit = line.split(":")
-        Dates_Words[lineSplit[0]] = lineSplit[1].replace("\n","")
-    print(Dates_Words)
-        
-    Dates_Words_keys = list(Dates_Words.keys())
-    Dates_Words_values = list(Dates_Words.values())
-    lastKnownDate = Dates_Words_keys[-1]
+        dates.append(line.replace("\n",""))
+    
+    lastKnownDate = dates[-1]
     newDay = bool(currentDate != lastKnownDate)  
-    newWord = randomWord(Dates_Words_values)
 
     if newDay:
         with open("last-known-date.txt","r+") as file:
             file.seek(0,2)
-            file.write(currentDate + f":{newWord}" + "\n")
+            file.write(currentDate + "\n")
 
     return newDay
     
@@ -110,7 +103,7 @@ def updateLettersUsed(lettersUsed, guessRow):
     letterKeys = list(lettersUsed.keys())
     for item in guessRow:
         letter = item.letter.lower()
-        if letter in letterKeys and lettersUsed[letter].letterColor != COLOR_GREEN:
+        if letter in letterKeys and lettersUsed[letter].letterColor not in (COLOR_GREEN,COLOR_YELLOW):
             lettersUsed[letter].setColor(item.letterColor)
 
     return lettersUsed

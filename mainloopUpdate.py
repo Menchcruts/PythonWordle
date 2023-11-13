@@ -14,7 +14,7 @@ def main(randomWord):
     if randomWord:
         secretWord = random.choice(validWords)
     else:
-        secretWord = "ghoul"
+        secretWord = "after"
     
 
     #Búum til tómt leikborð
@@ -28,15 +28,14 @@ def main(randomWord):
     
     #Safn breyta fyrir stafi notaða þegar leikurinn er byrjaður
     lettersUsed = {}
-
-
+    
     playing = True
     gaveUp = False
     won = False
     guessNumber = 1
     
     while playing:
-        
+
         #Tæmir terminal og teiknar leikborðið og lyklaborðið
         clearTerminal()
         drawBoard(board)
@@ -60,9 +59,9 @@ def main(randomWord):
         won = bool(guess == secretWord)
         
         #Hér fer allt það mikilvæga fram
-        if guess in validWords:
-            if len(guess) == 5:
-                
+        if len(guess) == 5:
+            if guess in validWords:
+
                 #evaluteGuess() fer í gegnum gískið og litar stafina 
                 #í þeim litum sem þeir eiga að vera 
                 board[guessNumber] = evaluteGuess(guess, board[guessNumber], secretWord)
@@ -75,21 +74,19 @@ def main(randomWord):
                 lettersUsed = updateLettersUsed(lettersUsed, board[guessNumber])
                 
                 guessNumber += 1
-
-        
-            elif len(guess) > 5:
-                print("Guess too long.")
-                input("Please press enter to guess again\n")
-        
+           
             else:
-                print("Guess too short.")
+                print("Word not found!")
                 input("Please press enter to guess again\n")
+        
+        elif len(guess) > 5:
+            print("Guess too long.")
+            input("Please press enter to guess again\n")
+        
         else:
-            print("Word not found!")
+            print("Guess too short.")
             input("Please press enter to guess again\n")
             
-
-        
 
     #Outside play loop
     #Reikna stig og prenta enda skilaboð
