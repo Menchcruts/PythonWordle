@@ -1,3 +1,5 @@
+# This Python file uses the following encoding: utf-8
+
 import random
 
 from mainFuncs import clearTerminal, drawBoard, drawKeyboard, evaluteGuess, fileToList, updateLettersUsed
@@ -6,7 +8,7 @@ from letterClass import Letter
 
 def main(randomWord):
 
-    #Bı til orğalistann og vel random orğ
+    #BÃ½ til orÃ°alistann og vel random orÃ°
     validWords = fileToList("valid-wordle-words2.txt")
   
     if randomWord:
@@ -15,7 +17,7 @@ def main(randomWord):
         secretWord = "ghoul"
     
 
-    #Búum til tómt leikborğ
+    #BÃºum til tÃ³mt leikborÃ°
     board = {}
     for i in range(1,7):
         letterList = []
@@ -24,7 +26,7 @@ def main(randomWord):
     
         board[i] = letterList
     
-    #Safn breyta fyrir stafi notağa şegar leikurinn er byrjağur
+    #Safn breyta fyrir stafi notaÃ°a Ã¾egar leikurinn er byrjaÃ°ur
     lettersUsed = {}
 
 
@@ -35,7 +37,7 @@ def main(randomWord):
     
     while playing:
         
-        #Tæmir terminal og teiknar leikborğiğ og şá 'lyklaborğiğ'
+        #TÃ¦mir terminal og teiknar leikborÃ°iÃ° og lyklaborÃ°iÃ°
         clearTerminal()
         drawBoard(board)
         drawKeyboard(lettersUsed)
@@ -48,7 +50,7 @@ def main(randomWord):
         guess = guess.replace(" ","")
         
 
-        #Ef mağur bara nennir ekki orğinu lengur
+        #Ef maÃ°ur bara nennir ekki orÃ°inu lengur
         if guess == "#quit":
             playing = False
             gaveUp = True
@@ -57,15 +59,15 @@ def main(randomWord):
         
         won = bool(guess == secretWord)
         
-        #Hér fer allt şağ mikilvæga fram
+        #HÃ©r fer allt Ã¾aÃ° mikilvÃ¦ga fram
         if guess in validWords:
             if len(guess) == 5:
                 
-                #evaluteGuess() fer í gegnum gískiğ og litar stafina 
-                #í şeim litum sem şeir eiga ağ vera 
+                #evaluteGuess() fer Ã­ gegnum gÃ­skiÃ° og litar stafina 
+                #Ã­ Ã¾eim litum sem Ã¾eir eiga aÃ° vera 
                 board[guessNumber] = evaluteGuess(guess, board[guessNumber], secretWord)
                 
-                #Şetta sér um ağ lita lyklaborğs stafina í réttum lit.
+                #Ãetta sÃ©r um aÃ° lita lyklaborÃ°s stafina Ã­ rÃ©ttum lit.
                 letters = [*guess]
                 for letter in letters:
                     if letter not in lettersUsed:
@@ -90,7 +92,7 @@ def main(randomWord):
         
 
     #Outside play loop
-    #Reikna stig og prenta enda skilaboğ
+    #Reikna stig og prenta enda skilaboÃ°
     score = (6-(guessNumber - 2)) if won else 0
     if won:
         print(f"You guessed the word in {guessNumber-1} guesses so you get {score} points.")
