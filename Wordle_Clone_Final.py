@@ -39,22 +39,23 @@ if choice == "y":
 
 
 playing = True
-score = 0
+totalScore = 0
 
-wordOfTheDay = randomWord()
-#secretWord = wordOfTheDay if doingWordOfDay else randomWord()
-
-randomWord = True
+randomWord = False
 
 while playing:
-    score += main(randomWord)
+    score = main(randomWord)
     input("Press enter to continue.")
 
     #while lúppa á meðan leikmaður er að ákveða sig. 
     while True:
         clearTerminal()
     
-        print(f"You have {score} points.")
+        totalScore += score
+        print(f"You got {score} points this round.")
+        print(f"You now have a total of {totalScore} points.")
+
+
         print("Do you want to play again?")
     
         choice = input("(Y/N): ")
