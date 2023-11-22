@@ -77,15 +77,15 @@ def main(randomWord):
            
             else:
                 print("Word not found!")
-                input("Please press enter to guess again\n")
+                clearTerminal(1)
         
         elif len(guess) > 5:
             print("Guess too long.")
-            input("Please press enter to guess again\n")
+            clearTerminal(1)
         
         else:
             print("Guess too short.")
-            input("Please press enter to guess again\n")
+            clearTerminal(1)
             
 
     #Outside play loop
