@@ -41,17 +41,17 @@ if choice == "y":
 playing = True
 totalScore = 0
 
-randomWord = False
+randomWord = True
 
 while playing:
     score = main(randomWord)
     input("Press enter to continue.")
-
+    totalScore += score
+    
     #while lúppa á meðan leikmaður er að ákveða sig. 
     while True:
         clearTerminal()
     
-        totalScore += score
         print(f"You got {score} points this round.")
         print(f"You now have a total of {totalScore} points.")
 
