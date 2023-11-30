@@ -105,6 +105,9 @@ def updateLettersUsed(lettersUsed, guessRow):
         letter = item.letter.lower()
         if letter in letterKeys and lettersUsed[letter].letterColor not in (COLOR_GREEN,COLOR_YELLOW):
             lettersUsed[letter].setColor(item.letterColor)
+        elif lettersUsed[letter].letterColor == COLOR_YELLOW and item.letterColor == COLOR_GREEN:
+            lettersUsed[letter].setColor(item.letterColor)
+            
 
     return lettersUsed
 

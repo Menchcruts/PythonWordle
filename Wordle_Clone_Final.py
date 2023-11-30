@@ -41,7 +41,7 @@ if choice == "y":
 playing = True
 totalScore = 0
 
-randomWord = True
+randomWord = False
 
 while playing:
     score = main(randomWord)

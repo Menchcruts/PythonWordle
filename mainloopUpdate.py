@@ -5,16 +5,15 @@ import random
 from mainFuncs import clearTerminal, drawBoard, drawKeyboard, evaluteGuess, fileToList, updateLettersUsed
 from letterClass import Letter
 
+validWords = fileToList("valid-wordle-words2.txt")
 
 def main(randomWord):
 
-    #Bý til orðalistann og vel random orð
-    validWords = fileToList("valid-wordle-words2.txt")
-  
+    #Vel random orð úr orðalistanum
     if randomWord:
         secretWord = random.choice(validWords)
     else:
-        secretWord = "after"
+        secretWord = "lanky"
     
 
     #Búum til tómt leikborð
